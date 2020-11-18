@@ -2,15 +2,18 @@ import React from 'react';
 import ListToDos from './ListToDos'
 
 class Input extends React.Component {
-    state = {inputText: ''}
+    state = {inputText: '', list: []} // need to add array to store lists in, on submit items = [...this.state.lists, inputText] ?
 
 handleChange = (event) => {
-    this.setState({inputText: event.target.value})
+    this.setState({inputText: event.target.value, list: []})
 }
 
-handleSubmit = (e) => {
-    e.preventDefault(); 
-    
+handleSubmit = (event) => {
+    event.preventDefault();
+    let items = [...this.state.list]; 
+    items.push(this.state.inputText); 
+    this.setState({list: items}, () => console.log(this.state))
+
 }
 
     render() {
@@ -23,7 +26,9 @@ handleSubmit = (e) => {
             onChange={this.handleChange}
             value={this.state.inputText}
             />
-            <button data-test='submit-button'>Submit</button>
+            <button data-test='submit-button'
+            className='btn'
+            >Submit</button>
                 </form>
                 <ListToDos />
             </div>
