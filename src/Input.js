@@ -12,7 +12,7 @@ handleSubmit = (event) => {
     event.preventDefault();
     let items = [...this.state.list]; 
     items.push(this.state.inputText); 
-    this.setState({list: items}, () => console.log(this.state))
+    this.setState({list: items, inputText: ''}, () => console.log(this.state))
 
 }
 
@@ -30,7 +30,7 @@ handleSubmit = (event) => {
             className='btn'
             >Submit</button>
                 </form>
-                <ListToDos />
+                <ListToDos items={this.state.list}/>
             </div>
         )
     };
