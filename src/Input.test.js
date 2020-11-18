@@ -58,7 +58,6 @@ describe('make sure input component has form, input, submit button', () => {
 
     test("input component renders ListToDos and passes `todos` down as props", () => {
         const wrapper = setUp(); 
-        // expect(wrapper.find(ListToDos).render().find('.todos').length).toBe(1);
         expect(wrapper.contains(<ListToDos />)).toEqual(true);
     });
 
