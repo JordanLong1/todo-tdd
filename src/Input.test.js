@@ -46,22 +46,12 @@ describe('make sure input component has form, input, submit button', () => {
       expect(text.value).toEqual(wrapper.state({inputText: 'party'}));
     });
 
-    // test('on submit, the inputText gets stored in the `list` array', () => {
-    //    const expectedItems = ['party']
-    // const wrapper = setUp(); 
-    // let listState = wrapper.state().list; 
-    // expect(wrapper.state('list')).toStrictEqual(listState); 
-    // wrapper.find('.btn').simulate('submit');
-    // console.log(wrapper.instance().state.list)
-    // expect(listState).toBe(['party']);
-    // });
 
     test("input component renders ListToDos and passes `todos` down as props", () => {
         const wrapper = setUp(); 
-        expect(wrapper.contains(<ListToDos />)).toEqual(true);
+        const items = wrapper.state().list;
+        expect(wrapper.contains(<ListToDos items={items} />)).toEqual(true);
     });
 
-    test("input component adds prop called`lists` onto ListToDos render", () => {
-
-    });
+   
 })
