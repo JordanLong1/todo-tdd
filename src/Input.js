@@ -19,6 +19,7 @@ handleSubmit = (event) => {
     render() {
         return (
             <div data-test='input-component'>
+                <h1 className='welcome-header'>Welcome to your To-Do list!</h1>
                 <form className='input-form' onSubmit={this.handleSubmit}>
             <input className='input'
             data-test='input-field'
