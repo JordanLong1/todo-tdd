@@ -15,6 +15,12 @@ describe('make sure input component has form, input, submit button', () => {
         expect(component.length).toBe(1);
     }); 
 
+    test('component contains a header that says `Welcome to your To-Do list` and renders with no error', () => {
+        const wrapper = setUp(); 
+        const header = wrapper.find('.welcome-header'); 
+        expect(header.text()).toEqual('Welcome to your To-Do list!'); 
+    });
+
     test('input component contains a form', () => {
         const wrapper = setUp(); 
         expect(wrapper.find('.input-form').length).toBe(1);
