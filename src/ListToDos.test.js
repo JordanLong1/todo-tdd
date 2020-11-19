@@ -13,6 +13,12 @@ test('render ul without throwing an error', () => {
    const unorderedList = wrapper.find('.ul'); 
    expect(unorderedList.length).toBe(1)
 }); 
+
+test('component includes header with text saying `here are your tasks`', () => {
+    const wrapper = setUp(); 
+    const header = wrapper.find('.todo-header'); 
+    expect(header.text()).toEqual('Here are your tasks: ');
+}); 
 test('rendes li with todo data without throwing an error', () => {
     const wrapper = setUp(); 
     const list = findByTestAttr(wrapper, 'todos-li'); 
