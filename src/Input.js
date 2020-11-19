@@ -5,14 +5,14 @@ class Input extends React.Component {
     state = {inputText: '', list: []} // need to add array to store lists in, on submit items = [...this.state.lists, inputText] ?
 
 handleChange = (event) => {
-    this.setState({inputText: event.target.value, list: []})
+    this.setState({inputText: event.target.value})
 }
 
 handleSubmit = (event) => {
     event.preventDefault();
-    let items = [...this.state.list]; 
-    items.push(this.state.inputText); 
-    this.setState({list: items, inputText: ''}, () => console.log(this.state))
+    // let items = [...this.state.list]; 
+    // items.push(this.state.inputText); 
+    this.setState({list: [...this.state.list, this.state.inputText], inputText: ''})
 
 }
 
@@ -30,7 +30,7 @@ handleSubmit = (event) => {
             className='btn'
             >Submit</button>
                 </form>
-                <ListToDos items={this.state.list}/>
+                <ListToDos items={this.state.list} text={this.state.inputText}/>
             </div>
         )
     };
