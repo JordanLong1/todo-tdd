@@ -2,8 +2,8 @@ import React from 'react';
 import {shallow} from 'enzyme'; 
 import Input from './Input'
 import ListToDos from './ListToDos';
-describe('make sure input component has form, input, submit button', () => {
 
+describe('make sure input component has form, input, submit button', () => {
 
     const setUp = () => shallow(<Input />);
      const findByTestAttr = (wrapper, val) => wrapper.find(`[data-test='${val}']`);
@@ -49,9 +49,22 @@ describe('make sure input component has form, input, submit button', () => {
 
     test("input component renders ListToDos and passes `todos` down as props", () => {
         const wrapper = setUp(); 
+        const text = wrapper.state().inputText;
         const items = wrapper.state().list;
-        expect(wrapper.contains(<ListToDos items={items} />)).toEqual(true);
+        expect(wrapper.contains(<ListToDos items={items} text={text} />)).toEqual(true);
     });
+
+    test("on submit, adds an item to the array", () => {
+        const wrapper = setUp(); 
+        const form = wrapper.find('.input-form'); 
+        form.simulate('submit', {
+            preventDefault: () => {
+
+            }, 
+            target: {list: ['party']}
+        }); 
+        expect(wrapper.state().list.length).toBe(1);
+    }); 
 
    
 })
