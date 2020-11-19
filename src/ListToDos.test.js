@@ -10,14 +10,11 @@ test('renders component without throwing error', () => {
 }); 
 test('on Input form submission, props have a length of one', () => {
     const wrapper = setUp(); 
-    expect(wrapper.props().length).toBe(1);
+    // expect(wrapper.props().length).toBe(1);
+    expect(wrapper.props()).toBe(true);
 }); 
 test('rendes li with todo data without throwing an error', () => {
     const wrapper = setUp(); 
     const list = findByTestAttr(wrapper, 'todos-li'); 
     expect(list.length).toBe(1); 
 }); 
-
-test('li contains data from props', () => {
-
-});
